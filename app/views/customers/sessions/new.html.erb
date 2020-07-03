@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="col-xs-6 col-xs-offset-3">
+  <h3>会員の方はこちらからログイン</h3>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "form-horizontal" }) do |f| %>
+    <div class="field form-group">
+      <%= f.label :メールアドレス, class: "col-sm-4 control-label" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-sm-8" %>
+    </div>
+
+    <div class="field form-group">
+      <%= f.label :パスワード, class: "col-sm-4 control-label" %>
+      <%= f.password_field :password, autocomplete: "current-password", class: "col-sm-8" %>
+      <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+        <%= link_to "⇒パスワードを忘れた方はこちら", new_password_path(resource_name), class: "pull-right" %>
+      <% end %>
+
+    </div>
+
+    <div class="actions text-center">
+      <%= f.submit "ログイン", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+  <h3>登録がお済みでない方</h3>
+  <div class="col-sm-offset-2 col-sm-10">
+    <%= render "customers/shared/links" %>
+  </div>
+</div>
+</div>
