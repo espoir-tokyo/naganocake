@@ -1,0 +1,43 @@
+// Place all the styles related to the homes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.genre_search{
+	height: 300px;
+	text-align: center;
+	border: solid 1px;
+}
+.site_description{
+	height: 200px;
+	border: solid 1px;
+}
+.flex{
+	display: flex;
+	justify-content: space-around;
+}
+.flex > div {
+	background-color: #FFF;
+	margin: 5px;
+	border: solid 1px;
+}
+.see_more{
+	display: flex;
+	flex-direction:row-reverse;
+}
+
+
+.about-headline{
+	text-align: center;
+}
+.overview_description{
+	text-align: center;
+	font-size: 20px;
+	margin: 40px 0;
+}
+.about-image{
+    width: 60%;
+	height: 250px;
+	border: solid 1px;
+	text-align: center;
+	margin: 0 auto;
+}
