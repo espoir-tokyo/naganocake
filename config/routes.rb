@@ -7,7 +7,9 @@ Rails.application.routes.draw do
 }
   namespace :admins do
   	get '/' => 'homes#top'
+    resources :items
   end
+
   #get 'admins' => 'admins/homes#top'
   #resources :homes, only: [:top]
 

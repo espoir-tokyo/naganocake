@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_02_045648) do
+ActiveRecord::Schema.define(version: 2020_07_04_155323) do
+
+  # create_table "admin_items", force: :cascade do |t|
+  #   t.string "name"
+  #   t.string "imagr_id"
+  #   t.text "description"
+  #   t.integer "genre_id"
+  #   t.integer "price"
+  #   t.boolean "sale_status"
+  #   t.datetime "created_at", null: false
+  #   t.datetime "updated_at", null: false
+  # end
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,6 +34,17 @@ ActiveRecord::Schema.define(version: 2020_07_02_045648) do
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
+
+  # create_table "admins_items", force: :cascade do |t|
+  #   t.string "name"
+  #   t.string "imagr_id"
+  #   t.text "description"
+  #   t.integer "genre_id"
+  #   t.integer "price"
+  #   t.boolean "sale_status"
+  #   t.datetime "created_at", null: false
+  #   t.datetime "updated_at", null: false
+  # end
 
   create_table "customers", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -42,6 +64,17 @@ ActiveRecord::Schema.define(version: 2020_07_02_045648) do
     t.boolean "withdrawal_status"
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "name"
+    t.string "image_id"
+    t.text "description"
+    t.integer "genre_id"
+    t.integer "price"
+    t.boolean "sale_status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
