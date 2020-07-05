@@ -17,6 +17,15 @@ Rails.application.routes.draw do
   	registrations: 'customers/registrations'
   }
 
+  namespace :customers do
+  	get '/profile' => 'customers#show'
+  	get '/profile/edit' => 'customers#edit'
+    put '/profile' => 'customers#update'
+    patch '/profile' => 'customers#update'
+    get '/delete/confirm' => 'customers#confirm'
+    patch '/delete' => 'customers#destroy'
+  end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'homes#top'
   get '/about' => 'homes#about'

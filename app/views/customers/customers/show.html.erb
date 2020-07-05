@@ -1,0 +1,54 @@
+<div class="col-xs-6 col-xs-offset-3">
+<p id="notice"><%= notice %></p><br>
+
+<h3>マイページ</h3>
+
+<table>
+<th >登録情報</th>
+<td><%= link_to "編集する", customers_profile_edit_path, class: "btn btn-primary" %></td>
+<td><button type="button" class="btn btn-primary">パスワードを変更する</button></td>
+</table>
+
+<table class="table table-bordered">
+	<tbody>
+		<tr>
+			<td class="active">氏名</td>
+			<td><%= @customer.surname %><%= @customer.first_name %></td>
+		</tr>
+		<tr>
+			<td class="active">カナ</td>
+			<td><%= @customer.surname_kana %><%= @customer.first_name_kana %></td>
+		</tr>
+		<tr>
+			<td class="active">郵便番号</td>
+			<td><%= @customer.postal_code %></td>
+		</tr>
+		<tr>
+			<td class="active">住所</td>
+			<td><%= @customer.address %></td>
+		</tr>
+		<tr>
+			<td class="active">電話番号</td>
+			<td><%= @customer.phone_number %></td>
+		</tr>
+		<tr>
+			<td class="active">メールアドレス</td>
+			<td><%= @customer.email %></td>
+		</tr>
+	</tbody>
+　</table>
+
+<div class="col-xs-7">
+<table class="col-xs-6">
+<th>配送先</th>
+<td><button type="button" class="btn btn-primary">一覧を見る</button></td>
+</table>
+
+<table class="col-xs-6">
+<th>注文履歴</th>
+<td><button type="button" class="btn btn-primary">一覧を見る</button></td>
+</table>
+</div>
+
+
+</div>
