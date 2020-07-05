@@ -28,19 +28,7 @@
 			    </div>
 			    <div class="items-list">
 			    	<%= f.label :ジャンル %>
-			    	<div class="btn-group">
-						<button type="button" class="btn btn-default">
-							--選択して下さい--
-						</button>
-						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-							<span class="caret"></span>
-						</button>
-						<ul class="dropdown-menu" role="menu">
-							<li role="presentation"><a role="menuitem" tabindex="-1" href="#">リンクのリスト１</a></li>
-							<li role="presentation"><a role="menuitem" tabindex="-1" href="#">リンクのリスト２</a></li>
-							<li role="presentation"><a role="menuitem" tabindex="-1" href="#">リンクのリスト３</a></li>
-						</ul>
-					</div>
+			    	<%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択して下さい--" %>
 			    </div>
 			    <div class="items-list">
 			    	<%= f.label :税抜価格 %>
@@ -48,21 +36,9 @@
 			    </div>  <!-- integerの時のフォームって何だろう？ -->
 			    <div class="items-list">
 			    	<%= f.label :販売ステータス %>
-			    	<div class="btn-group">
-						<button type="button" class="btn btn-default">
-							--選択して下さい--
-						</button>
-						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-							<span class="caret"></span>
-						</button>
-						<ul class="dropdown-menu" role="menu">
-							<li role="presentation"><a role="menuitem" tabindex="-1" href="#">販売中</a></li>
-							<li role="presentation"><a role="menuitem" tabindex="-1" href="#">売り切れ</a></li>
-						</ul>
-					</div>
+			    	<%= f.select :sale_status, [["販売中", "true"], ["売切れ", "false"]], include_blank: "--選択して下さい--" %>
 			    </div>
 		</div>
-		<!-- <div class="col-xs-4"></div> -->
 	</div>
 	<div class="row">
 		<div class="col-xs-8"></div>
