@@ -1,15 +1,14 @@
 Rails.application.routes.draw do
 
   devise_for :admins, controllers: {
-  sessions:      'admins/sessions',
-  passwords:     'admins/passwords',
-  registrations: 'admins/registrations'
-}
+  	sessions:      'admins/sessions',
+  	passwords:     'admins/passwords',
+  	registrations: 'admins/registrations'
+  }
   namespace :admins do
   	get '/' => 'homes#top'
+  	resources :customers
   end
-  #get 'admins' => 'admins/homes#top'
-  #resources :homes, only: [:top]
 
   devise_for :customers, controllers: {
   	sessions:      'customers/sessions',
