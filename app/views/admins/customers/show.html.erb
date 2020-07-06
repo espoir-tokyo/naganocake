@@ -1,0 +1,41 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-5">
+			<h2><%= @customer.surname + @customer.first_name + "さんの会員詳細" %></h2>
+			<table class="table">
+				<tr>
+					<th class="th">顧客ID</th>
+					<td class="td"><%= @customer.id %></td>
+					<!-- ここに有効会員か退会会員かを表示する必要がある -->
+				</tr>
+				<tr>
+					<th class="th">氏名</th>
+					<td class="td"><%= @customer.surname + "　" + @customer.first_name %></td>
+				</tr>
+				<tr>
+					<th class="th">フリガナ</th>
+					<td class="td"><%= @customer.surname_kana + "　" + @customer.first_name_kana %></td>
+				</tr>
+				<tr>
+					<th class="th">郵便番号</th>
+					<td class="td"><%= @customer.postal_code %></td>
+				</tr>
+				<tr>
+					<th class="th">住所</th>
+					<td class="td"><%= @customer.address %></td>
+				</tr>
+				<tr>
+					<th class="th">電話番号</th>
+					<td class="td"><%= @customer.phone_number %></td>
+				</tr>
+				<tr>
+					<th class="th">メールアドレス</th>
+					<td class="td"><%= @customer.email %></td>
+				</tr>
+			</table>
+			<%= link_to "編集する", edit_admins_customer_path(@customer), class: 'btn btn-primary' %>
+			<%= link_to "注文履歴一覧を見る", edit_admins_customer_path(@customer), class: 'btn btn-primary' %>
+			<!-- 注文履歴一覧を見るボタンは注文履歴一覧に遷移するパスを設定する必要がある（現在は編集画面に遷移する） -->
+		</div>
+	</div>
+</div>
