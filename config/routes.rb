@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   }
 
   namespace :customers do
+  　resources :shipping_addresses
   	get '/profile' => 'customers#show'
   	get '/profile/edit' => 'customers#edit'
     put '/profile' => 'customers#update'
