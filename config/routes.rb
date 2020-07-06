@@ -16,7 +16,9 @@ Rails.application.routes.draw do
   	passwords:     'customers/passwords',
   	registrations: 'customers/registrations'
   }
-
+  namespace :customers do
+  resources :shipping_addresses
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'homes#top'
   get '/about' => 'homes#about'
