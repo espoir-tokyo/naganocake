@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Naganocake</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header class="navbar  navbar-default">
+      <div class="container-fluid">
+        <nav class='nav navbar-nav navbar-left' >
+          <h1>Naganocake</h1>
+        </nav>
+          <nav>
+            <ul class="nav navbar-nav navbar-right">
+              <% if admin_signed_in? %>
+               　<li><%= link_to ' 商品一覧',new_customer_registration_path,class: 'glyphicon glyphicon-home home' %></li>
+                <li><%= link_to ' 会員一覧',new_customer_registration_path,class: 'glyphicon glyphicon-cutlery' %></li>
+                <li><%= link_to ' 注文履歴一覧',new_customer_registration_path ,class: 'glyphicon glyphicon-shopping-cart'%></li>
+                <li><%= link_to ' ジャンル一覧', new_customer_registration_path,class: 'glyphicon glyphicon-log-in' %></li>
+                <li><%= link_to ' ログアウト', new_customer_registration_path, method: :delete,class: 'glyphicon glyphicon-log-out logout' %></li>
+                  <br>
+                    <form class="navbar-form navbar-right" >
+                      <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                      </div>
+                    </form>
+                  </br>
+                <% else %>
+                <li><%= link_to ' About',new_customer_registration_path,class: 'glyphicon glyphicon-cutlery' %></li>
+                <li><%= link_to ' 商品一覧',new_customer_registration_path,class: 'glyphicon glyphicon-edit' %></li>
+                <li><%= link_to ' 新規登録', new_customer_registration_path,class: 'glyphicon glyphicon-log-in' %></li>
+                <li><%= link_to ' ログイン', new_customer_registration_path,class: 'glyphicon glyphicon-log-in' %></li>
+              <% end %>
+            </ul>
+          </nav>
+      </div>
+    </header>
+      <div class='container'>
+
+
+        <p id="notice"><%= notice %></p>
+
+        <%= yield %>
+      </div>
+
+  </body>
+</html>
