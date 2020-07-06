@@ -1,6 +1,9 @@
 class Item < ApplicationRecord
 	attachment :image
 	belongs_to :genre
-	validates :name, presence: true, length: {minimum: 1}
-	# validates :sale_status, inclusion: { in: ["true", "false"]}
+	validates :name, presence: true
+	validates :description, presence: true
+	validates :genre_id, presence: true
+	validates :price, presence: true
+	validates :sale_status, presence: true
 end

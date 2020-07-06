@@ -6,7 +6,7 @@ class Admins::ItemsController < ApplicationController
 	def create
 		@item = Item.new(item_params)
 		if @item.save!
-			redirect_to admins_items_path, notice: "successfully created book!"
+			redirect_to admins_items_path, notice: "successfully created!"
 			# リダイレクト先はあとで変更
 		else
 			redirect_to about_path
@@ -25,7 +25,7 @@ class Admins::ItemsController < ApplicationController
 	def update
 		@item = Item.find(params[:id])
 		if @item.update(item_params)
-			redirect_to admins_items_path, notice: "successfully updated book!"
+			redirect_to admins_items_path, notice: "successfully updated!"
 		else
 			redirect_to about_path
 		end
