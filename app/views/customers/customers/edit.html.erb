@@ -1,12 +1,8 @@
-
-<%= render 'layouts/customers' %>
-
 <div class="col-xs-6 col-xs-offset-3">
 
-  <h3 >新規会員登録</h3>
+  <h3 >登録情報編集</h3>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-horizontal" }) do |f| %>
-  <%= render "customers/shared/error_messages", resource: resource %>
+  <%= form_for(@customer, url:"/customers/profile") do |f| %>
 
   <div class="field form-group">
     <%= f.label :名前, class: "col-sm-4" %>
@@ -34,61 +30,38 @@
   </div>
 
   <div class="field form-group">
-    <%= f.label :メールアドレス, class: "col-sm-4" %>
+    <%= f.label :メールアドレス, class: "col-sm-6" %>
     <div class="col-sm-4">
       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     </div>
   </div>
 
   <div class="field form-group">
-    <%= f.label :郵便番号（ハイフンなし）, class: "col-sm-4" %>
+    <%= f.label :郵便番号（ハイフンなし）, class: "col-sm-6" %>
     <div class="col-sm-4">
     <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
   </div>
   </div>
 
   <div class="field form-group">
-    <%= f.label :住所, class: "col-sm-4" %>
+    <%= f.label :住所, class: "col-sm-6" %>
     <div class="col-sm-4">
     <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
   </div>
   </div>
 
   <div class="field form-group">
-    <%= f.label :電話番号（ハイフンなし）, class: "col-sm-4" %>
+    <%= f.label :電話番号（ハイフンなし）, class: "col-sm-6" %>
     <div class="col-sm-4">
     <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %>
   </div>
   </div>
 
-  <div class="field form-group">
-    <div class="col-sm-4">
-    <%= f.label :パスワード %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> 文字以上)</em>
-    <% end %>
-    </div>
-    <div class="col-sm-4">
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-  </div>
-
-  <div class="field form-group">
-    <%= f.label :パスワード（確認用）, class: "col-sm-4" %>
-    <div class="col-sm-4">
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-  </div>
-
   <div class="actions text-center">
-    <%= f.submit "新規登録", class: "btn btn-success" %>
+    <%= f.submit "編集内容を保存する", class: "btn btn-primary" %>
+    <%= link_to "退会する", customers_delete_confirm_path, class: "btn btn-danger" %>
   </div>
+
 <% end %>
 
-
-<h3>既に登録済みの方</h3>
-<%= render "customers/shared/links" %> 
-
 </div>
-
-<%= render 'layouts/footer' %>

@@ -71,3 +71,4 @@ gem "refile-mini_magick"
 
 gem 'pry-byebug'
 
+gem 'paranoia'

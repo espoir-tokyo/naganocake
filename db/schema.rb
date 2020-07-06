@@ -39,7 +39,8 @@ ActiveRecord::Schema.define(version: 2020_07_05_061211) do
     t.string "postal_code"
     t.text "address"
     t.string "phone_number"
-    t.boolean "withdrawal_status"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_customers_on_deleted_at"
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
