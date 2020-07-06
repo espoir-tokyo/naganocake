@@ -7,7 +7,10 @@ Rails.application.routes.draw do
   }
   namespace :admins do
   	get '/' => 'homes#top'
-  	resources :customers
+
+    resources :items
+    resources :genres
+    resources :customers
   end
 
   devise_for :customers, controllers: {
