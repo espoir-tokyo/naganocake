@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-7">
+      <h2>ショッピングカート</h2>
+    </div>
+    <div class="col-xs-2">
+      <div><%= link_to "カートを空にする", customers_cart_items_path(@cart_items), method: :delete, class:"btn btn-danger" %></div>
+    </div>
+  </div>
+  <div class="row">
+    <h4><%= notice %></h4>
+	  <table class="table-bordered">
+      <tr>
+        <th style="width:300px;">商品名</th>
+        <th style="width:120px; height:50px">単価（税込）</th>
+        <th style="width:120px; height:50px">数量</th>
+        <th style="width:120px; height:50px">小計</th>
+        <th style="width:120px; height:50px"></th>
+      </tr>
+
+      <!-- ここに商品を追加するコードを記載する -->
+
+    </table>
+  </div>
+  <div class="row">
+    <div class="col-xs-9">
+      <div style="margin-top:50px;"><%= link_to "買い物を続ける", root_path, class:"btn btn-primary" %></div>
+    </div>
+    <div class="col-xs-3">
+      <table class="table-bordered">
+        <tr>
+          <th style="width:120px; height:50px">合計金額</th>
+          <td style="width:120px; height:50px">1000</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-4"></div>
+    <div class="col-xs-4">
+      <%= link_to "情報入力に進む", root_path, class: "btn btn-success btn-lg" %>
+    </div>
+    <div class="col-xs-4"></div>
+  </div>
+
+</div>

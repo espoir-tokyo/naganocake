@@ -19,7 +19,9 @@ Rails.application.routes.draw do
   }
 
   namespace :customers do
-    resources :shipping_addresses
+  	resources :shipping_addresses
+  	resources :cart_items
+  	delete '/cart_items' => 'cart_items#destroy_all'
   	get '/profile' => 'customers#show'
   	get '/profile/edit' => 'customers#edit'
     put '/profile' => 'customers#update'
