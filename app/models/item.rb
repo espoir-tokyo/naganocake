@@ -8,6 +8,6 @@ class Item < ApplicationRecord
 	validates :sale_status, inclusion:{in: [true, false]}
 
 	def price_with_tax
-		self.price = (price * 1.08).round
+		self.price = (price * 1.1).round
 	end
 end
