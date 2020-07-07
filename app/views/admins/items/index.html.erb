@@ -1,0 +1,35 @@
+<%= render 'layouts/admins' %>
+
+	<div class="row">
+		<div class="col-xs-10">
+			<h2 class="">商品一覧</h2>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>商品ID</th>
+						<th>商品名</th>
+						<th>税抜き価格</th>
+						<th>ジャンル</th>
+						<th>ステータス</th>
+					</tr>
+				</thead>
+				<% @items.each do |item| %>
+				    <tbody>
+				    	<tr>
+				    		<td><%= item.id %></td>
+				    		<td><%= link_to admins_item_path(item) do %>
+				    			    <%= item.name %>
+				    			<% end %>
+				    		</td>
+				    		<td><%= to_yen(item.price) %></td>
+				    		<td><%= item.genre_id %></td>
+				    		<td><%= display(item.sale_status) %></td>
+				    	</tr>
+				    </tbody>
+				<% end %>
+			</table>
+		</div>
+	</div>
+
+
+<%= render 'layouts/footer' %>
