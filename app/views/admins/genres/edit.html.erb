@@ -1,4 +1,5 @@
-<div class="container">
+<%= render 'layouts/admins' %>
+
 	<h2>ジャンル編集</h2>
 	<div class="row genre-new">
 		<%= form_for(@genre, url: admins_genre_path, html: {method: 'PATCH'}) do |f|  %>
@@ -17,4 +18,5 @@
         </div>
         <% end %>
     </div>
-</div>
+
+<%= render 'layouts/footer' %>
