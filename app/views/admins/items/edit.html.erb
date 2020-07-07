@@ -1,4 +1,5 @@
-<div class="container">
+<%= render 'layouts/admins' %>
+
 	<%= form_for(@item, url: admins_item_path, html: {method: 'PATCH'}) do |f| %>
 	<div class="row">
 		<h2 class="product_newly_registration_headline">商品編集</h2>
@@ -36,7 +37,7 @@
 			    </div>
 			    <div class="items-list">
 			    	<%= f.label :販売ステータス %>
-			    	<%= f.select :sale_status, [["販売中", "true"], ["売切れ", "false"]], include_blank: "--選択して下さい--" %>
+			    	<%= f.select :sale_status, [["販売中", "true"], ["販売停止中", "false"]], include_blank: "--選択して下さい--" %>
 			    </div>
 		</div>
 	</div>
@@ -47,4 +48,5 @@
 		  </div>
 	</div>
 	<% end %>
-</div>
+
+<%= render 'layouts/footer' %>
