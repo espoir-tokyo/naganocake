@@ -7,6 +7,7 @@ class Customers::ItemsController < ApplicationController
 	def show
 		@item = Item.find(params[:id])
 		@genres = Genre.where(flag: 'true')
+		@cart_item = CartItem.new
 	end
 
 	def genre_index
