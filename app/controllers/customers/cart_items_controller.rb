@@ -1,32 +1,39 @@
 class Customers::CartItemsController < ApplicationController
-	def index
-		@cart_items = current_customer.cart_items
+	before_action :authenticate_customer!
+	def show
+		@cart_items = CartItem.all
+		@total = 0
+		current_customer.cart_items.each do |cart_item|
+			price = cart_item.item.price_with_tax
+			quantity = cart_item.quantity
+			@total += price * quantity
+		end
 	end
 
 	def create
-		# @cart_item = CartItem.new(item_params)
-		# @cart_item.customer_id = current_customer.id
-		# @cart_item.price = @cart_item.items.price * @cart_item.quantity
-		# @cart_item.save
-		# redirect_to cart_items_path
+		@cart_item = CartItem.new(item_params)
+		@cart_item.customer_id = current_customer.id
+		@cart_item.save
+		redirect_to customers_cart_items_path
 	end
 
 	def update
-		@cart_item = CartItem.find(params[:id])
-		@cart_item.update(cart_item_params)
-		redirect_to cart_items_path
+		@cart_item = CartItem.find(params[:cart_item][:cart_item_id])
+		@cart_item.update(item_params)
+		redirect_to customers_cart_items_path
 	end
 
 	def destroy
-		@cart_item = CartItem.find(params[:id])
-		@cart_item.destroy
-		redirect_to cart_items_path
+		#binding.pry
+		# @cart_item = CartItem.find(params[:cart_item][:cart_item_id])
+		# @cart_item.destroy
+		# redirect_to customers_cart_items_path
 	end
 
 	def destroy_all
-		@cart_items = current_customer.cart_items
-		@cart_item.destroy_all
-		redirect_to cart_items_path
+		# @cart_items = current_customer.cart_items
+		# @cart_items.destroy_all
+		# redirect_to customers_cart_items_path
 	end
 
 	private
