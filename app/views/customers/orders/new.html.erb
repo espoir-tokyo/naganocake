@@ -1,0 +1,38 @@
+
+<div class="container">
+    <div class="row">
+		<h3>注文情報入力</h3>
+		  <%= form_for(@order, url: "/customers/orders/confirm", html: {method:'GET'}) do |f| %>
+		<h4>支払方法</h4>
+		  <label><%= f.radio_button :payment_informantion, "0" %>クレジットカード</label><br>
+		  <label><%= f.radio_button :payment_informantion, "1" %>銀行振込</label><br>
+		<h4>お届け先</h4>
+		  <label><%= radio_button_tag :address_number, "0" %>ご自身の住所</label><br>
+		  <%= @customer.postal_code + @customer.address %><br>
+		  <%= @customer.surname + @customer.first_name %><br>
+		  <label><%= radio_button_tag :address_number, "1" %>登録住所から選択</label><br>
+		  <%= f.collection_select :ship_address, ShippingAddress.all, :id, :full_address, include_blank: "--選択して下さい--" %><br>
+
+		  <label><%= radio_button_tag :address_number, "2" %>新しいお届け先</label><br>
+
+	    <div class="field form-group">
+			<%= f.label :郵便番号ハイフンなし %>
+			<%= f.text_field :ship_postal_code %>
+		</div>
+
+	    <div class="field form-group">
+			<%= f.label :住所 %>
+			<%= f.text_field :ship_address %>
+		</div>
+
+	    <div class="field form-group">
+			<%= f.label :宛名 %>
+			<%= f.text_field :ship_name %>
+		</div>
+
+		<div class="actions row">
+			<%= f.submit class: "btn btn-primary col-xs-3" %>
+		</div>
+      <% end %>
+    </div>
+</div>
