@@ -1,6 +1,7 @@
 class Customers::CartItemsController < ApplicationController
 	before_action :authenticate_customer!
-	def show
+
+	def index
 		@cart_items = CartItem.all
 		@total = 0
 		current_customer.cart_items.each do |cart_item|
@@ -24,16 +25,15 @@ class Customers::CartItemsController < ApplicationController
 	end
 
 	def destroy
-		#binding.pry
-		# @cart_item = CartItem.find(params[:cart_item][:cart_item_id])
-		# @cart_item.destroy
-		# redirect_to customers_cart_items_path
+		@cart_item = CartItem.find(params[:id])
+		@cart_item.destroy
+		redirect_to customers_cart_items_path
 	end
 
 	def destroy_all
-		# @cart_items = current_customer.cart_items
-		# @cart_items.destroy_all
-		# redirect_to customers_cart_items_path
+		@cart_items = current_customer.cart_items
+		@cart_items.destroy_all
+		redirect_to customers_cart_items_path
 	end
 
 	private
