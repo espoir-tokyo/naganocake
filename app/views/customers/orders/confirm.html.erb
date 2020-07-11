@@ -13,24 +13,6 @@
 		</tr>
 	</thead>
 	<tbody>
-		<%# ship_address.each do |ship_address| %>
-		<tr>
-			<td>
-				<%# ship_address.postal_code %>
-			</td>
-			<td>
-				<%# ship_address.postal_code %>
-			</td>
-			<td>
-				<%# ship_address.postal_code %>
-			</td>
-			<td>
-				<%# ship_address.postal_code %>
-			</td>
-			<td>
-			</td>
-		</tr>
-		<%# end %>
 	</tbody>
 </table>
 
@@ -38,4 +20,6 @@
 <%= @value %>
 
 <h3>お届け先</h3>
-<%= @address %>
+<%= @order.ship_postal_code %>
+<%= @order.ship_address %>
+<%= @order.ship_name %>
