@@ -19,10 +19,10 @@ Rails.application.routes.draw do
   }
 
   namespace :customers do
-  	resources :shipping_addresses
-    resources :orders, only: [:create,:new]
     get '/orders/thanks' => 'orders#thanks'
     get '/orders/confirm' => 'orders#confirm'
+  	resources :shipping_addresses
+    resources :orders, only: [:create,:new, :index, :show]
   	resources :cart_items
   	delete '/cart_items' => 'cart_items#destroy_all'
   	get '/profile' => 'customers#show'

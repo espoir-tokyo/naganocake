@@ -13,9 +13,9 @@
 	      <% current_customer.cart_items.each do |cart_item| %>
 	      <tr>
 	        <td><%= cart_item.item.name %></td>
-	        <td><%= cart_item.item.price %></td>
+	        <td><%= cart_item.item.price_with_tax %></td>
 	        <td><%= cart_item.quantity %></td>
-	        <td><%= cart_item.item.price * cart_item.quantity %></td>
+	        <td><%= cart_item.item.price_with_tax * cart_item.quantity %></td>
 	       </tr>
 	      <% end %>
 	    </table>
@@ -48,12 +48,13 @@
 	<%= form_with(model:@order, url: customers_orders_path, method: "POST", local: true ) do |f| %>
 
 		<%= f.hidden_field :payment_informantion, value:@order.payment_informantion %><br>
-
+		<%= f.hidden_field :customer_id, value:current_customer.id %><br>
 		<%= f.hidden_field :ship_postal_code, value:@order.ship_postal_code %><br>
 		<%= f.hidden_field :ship_address, value: @order.ship_address %><br>
 		<%= f.hidden_field :ship_name, value: @order.ship_name %><br>
 		<%= f.hidden_field :bill, value: @bill %><br>
 		<%= f.hidden_field :carriage, value: @carriage %><br>
+		<%= f.hidden_field :order_status, value: 0 %><br>
 
 
 

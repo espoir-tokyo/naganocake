@@ -1,0 +1,92 @@
+<%= render 'layouts/customers' %>
+<h3>注文履歴詳細</h3>
+
+<div class="container">
+
+<div class=" col-xs-6">
+<h4>注文情報</h4>
+<table class="table table-bordered">
+	<tbody>
+		<tr>
+			<td class="active">注文日</td>
+			<td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+		</tr>
+		<tr>
+			<td class="active">配送先</td>
+			<td><%= @order.ship_postal_code %><br>
+				<%= @order.ship_address %><br>
+				<%= @order.ship_name %>
+				</td>
+		</tr>
+		<tr>
+			<td class="active">支払い方法</td>
+			<td><% if @order.payment_informantion == 0 %>
+				クレジットカード
+				<% else %>
+				銀行振込
+				<% end %>
+			</td>
+		</tr>
+		<tr>
+			<td class="active">ステータス</td>
+			<td><% if @order.order_status == 0 then %>
+			    入金待ち
+			    <% elsif @order.order_status == 1 then %>
+			    入金確認
+			    <% elsif @order.order_status == 2 then %>
+			    製作中
+			    <% elsif @order.order_status == 3 then %>
+			    発送準備中
+			    <% elsif @order.order_status == 4 then %>
+			    発送済み
+			    <% else %>
+				<% end %></td>
+		</tr>
+	</tbody>
+　</table>
+</div>
+
+<div class="pull-left col-xs-6">
+<h4>請求情報</h4>
+<table class="table table-bordered">
+	<tbody>
+		<tr>
+			<td class="active">商品合計</td>
+			<td><%= @order.bill - @order.carriage %></td>
+		</tr>
+		<tr>
+			<td class="active">配送料</td>
+			<td><%= @order.carriage %></td>
+		</tr>
+		<tr>
+			<td class="active">ご請求金額</td>
+			<td><%= @order.bill %></td>
+		</tr>
+	</tbody>
+　</table>
+</div>
+</div>
+
+<div class="container">
+
+<h4>注文内容</h4>
+<table class="table table-bordered col-xs-10">
+	<tbody>
+		<tr>
+			<td class="active">商品名</td>
+			<td class="active">単価(税込)</td>
+			<td class="active">個数</td>
+			<td class="active">小計</td>
+		</tr>
+		<% @order.order_items.each do |item| %>
+		<tr>
+			<td><%= item.item.name %></td>
+			<td><%= item.perchase_price %></td>
+			<td><%= item.quantity %></td>
+			<td><%= item.perchase_price * item.quantity %></td>
+		</tr>
+		<% end %>
+	</tbody>
+　</table>
+
+</div>
