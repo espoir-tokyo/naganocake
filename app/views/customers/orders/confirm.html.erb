@@ -1,25 +1,61 @@
 <%= render 'layouts/customers' %>
-
-    <h3>注文情報確認</h3>
-
-<table class="table table-bordered">
-	<thead>
-		<tr>
-			<th>商品名</th>
-			<th>単価</th>
-			<th>数量</th>
-			<th>小計</th>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-	</tbody>
-</table>
-
+<h3>注文情報確認</h3>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-9">
+		<table class="table-bordered">
+	      <tr>
+	        <th style="width:300px;">商品名</th>
+	        <th style="width:120px; height:50px">単価（税込）</th>
+	        <th style="width:120px; height:50px">数量</th>
+	        <th style="width:120px; height:50px">小計</th>
+	      </tr>
+	      <% current_customer.cart_items.each do |cart_item| %>
+	      <tr>
+	        <td><%= cart_item.item.name %></td>
+	        <td><%= cart_item.item.price %></td>
+	        <td><%= cart_item.quantity %></td>
+	        <td><%= cart_item.item.price * cart_item.quantity %></td>
+	       </tr>
+	      <% end %>
+	    </table>
+	</dev>
+   </div>
+   <div class="row">
+    <div class="col-xs-3">
+      <table class="table-bordered">
+        <tr>
+          <th style="width:120px; height:50px">送料</th>
+          <td style="width:120px; height:50px"><%= @carriage %></td>
+          <th style="width:120px; height:50px">商品合計</th>
+          <td style="width:120px; height:50px"><%= @total %></td>
+          <th style="width:120px; height:50px">請求金額</th>
+          <td style="width:120px; height:50px"><%= @bill %></td>
+        </tr>
+      </table>
+    </div>
+   </div>
+</div>
 <h3>支払方法</h3>
 <%= @value %>
 
 <h3>お届け先</h3>
-<%= @order.ship_postal_code %>
-<%= @order.ship_address %>
-<%= @order.ship_name %>
+<%=	@order.ship_postal_code %><br>
+<%= @order.ship_address %><br>
+<%= @order.ship_name %><br>
+
+
+	<%= form_with(model:@order, url: customers_orders_path, method: "POST", local: true ) do |f| %>
+
+		<%= f.hidden_field :payment_informantion, value:@order.payment_informantion %><br>
+
+		<%= f.hidden_field :ship_postal_code, value:@order.ship_postal_code %><br>
+		<%= f.hidden_field :ship_address, value: @order.ship_address %><br>
+		<%= f.hidden_field :ship_name, value: @order.ship_name %><br>
+		<%= f.hidden_field :bill, value: @bill %><br>
+		<%= f.hidden_field :carriage, value: @carriage %><br>
+
+
+
+        <%= f.submit "購入を確定する" %>
+    <% end %>
