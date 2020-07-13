@@ -4,14 +4,20 @@
 		<div class="col-xs-11">
 			<div class="">購入者 <%= @order.customer.surname + @order.customer.first_name %></div>
 			<div class="">配送先 <%= @order.ship_postal_code + @order.ship_address + @order.ship_name %></div>
-			<div class="">支払い方法 <%= @order.payment_informantion %></div>
+			<div class="">支払い方法 <% if @order.payment_informantion == 0 %>
+				                       クレジットカード
+				                    <% else %>
+				                       銀行振込
+				                    <% end %>
+		    </div>
 			<%= form_for(@order, url: admins_order_path, html: {method: 'PATCH'}) do |f| %>
 				<div class="">注文ステータス <%= f.select :order_status, [
+					            ["入金待ち", "0"],
 							    ["入金確認", "1"],
 							    ["製作中", "2"],
-							    ["制作準備中", "3"],
+							    ["発送準備中", "3"],
 							    ["発送済み", "4"],
-							    ], include_blank: "入金待ち" %>
+							    ] %>
 							    <!--  include_blank: " @order.order_status " -->
 							    <%= f.submit '更新', class: 'btn btn-large btn-primary items-button' %>
 			    </div>

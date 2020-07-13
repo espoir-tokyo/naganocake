@@ -14,7 +14,8 @@ class Customers::OrdersController < ApplicationController
           order_id: @order.id,
         	item_id: cart_item.item.id,
         	quantity: cart_item.quantity,
-        	perchase_price: cart_item.item.price_with_tax
+        	perchase_price: cart_item.item.price_with_tax,
+          item_status: "0",
         	 )
         order_item.save
       end
