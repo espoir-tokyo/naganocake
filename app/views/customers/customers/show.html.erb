@@ -1,3 +1,4 @@
+<%= render 'layouts/customers' %>
 <div class="col-xs-6 col-xs-offset-3">
 <p id="notice"><%= notice %></p><br>
 
@@ -46,7 +47,7 @@
 
 <table class="col-xs-6">
 <th>注文履歴</th>
-<td><button type="button" class="btn btn-primary">一覧を見る</button></td>
+<td><%= link_to "一覧を見る", customers_orders_path, class: "btn btn-primary" %></td>
 </table>
 </div>
 
