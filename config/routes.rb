@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     resources :items
     resources :genres
     resources :customers
+    resources :orders
+    patch 'order_items/:id' => 'order_items#update'
   end
 
   devise_for :customers, controllers: {
