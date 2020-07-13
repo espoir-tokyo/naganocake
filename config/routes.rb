@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :genres
     resources :customers
     resources :orders
+    patch 'order_items/:id' => 'order_items#update'
     resources :order_items
   end
 
@@ -23,7 +24,7 @@ Rails.application.routes.draw do
   namespace :customers do
   	resources :shipping_addresses
     resources :orders, only: [:create,:new]
-    get 'orders/thanks' => 'orders#thanks'
+    get '/orders/thanks' => 'orders#thanks'
     get '/orders/confirm' => 'orders#confirm'
   	resources :cart_items
   	delete '/cart_items' => 'cart_items#destroy_all'
