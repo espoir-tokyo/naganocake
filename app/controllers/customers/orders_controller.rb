@@ -11,6 +11,7 @@ class Customers::OrdersController < ApplicationController
         #ここから下カートitem
         current_customer.cart_items.each do |cart_item|
         order_item = OrderItem.new(
+          order_id: @order.id,
         	item_id: cart_item.item.id,
         	quantity: cart_item.quantity,
         	perchase_price: cart_item.item.price,
