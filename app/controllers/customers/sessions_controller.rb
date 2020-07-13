@@ -1,6 +1,14 @@
 # frozen_string_literal: true
 
 class Customers::SessionsController < Devise::SessionsController
+     #ログイン後のリダイレクト先
+def after_sign_in_path_for(resource)
+  customers_items_path
+end 
+#ログアウト後のリダイレクト先
+def after_sign_out_path_for(resource)
+  customers_items_path
+end 
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in

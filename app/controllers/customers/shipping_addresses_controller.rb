@@ -1,7 +1,7 @@
 class Customers::ShippingAddressesController < ApplicationController
 	def index
 	   @shipping_address = ShippingAddress.new
-	   @shipping_addresses = ShippingAddress.all
+	   @shipping_addresses = ShippingAddress.where(customer_id: current_customer.id)
 	end
 
 	def create
