@@ -45,6 +45,13 @@ class Customers::OrdersController < ApplicationController
         @order.ship_name = registered_address.name
 
       elsif params[:address_number] == "2" then
+        @shipping_address = ShippingAddress.new
+        @shipping_address.customer_id = current_customer.id
+        @shipping_address.address = @order.ship_address
+        @shipping_address.postal_code = @order.ship_postal_code
+        @shipping_address.name = @order.ship_name
+        
+        @shipping_address.save
       end
    
       @cart_items = CartItem.all
@@ -59,11 +66,11 @@ class Customers::OrdersController < ApplicationController
   end
 
   def thanks
-  	
+
   end
 
   def index
-     @orders = Order.where(customer_id: current_customer.id).order(created_at: :desc)
+     @orders = Order.where(customer_id: current_customer.id).order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def show

@@ -12,9 +12,15 @@ class Customers::CartItemsController < ApplicationController
 	end
 
 	def create
-		@cart_item = CartItem.new(item_params)
-		@cart_item.customer_id = current_customer.id
-		@cart_item.save
+		@item = CartItem.find_by(customer_id: current_customer.id, item_id: params[:cart_item][:item_id])
+		if @item == nil
+			@cart_item = CartItem.new(item_params)
+			@cart_item.customer_id = current_customer.id
+			@cart_item.save
+		else
+			@item.quantity += params[:cart_item][:quantity].to_i
+			@item.save
+		end
 		redirect_to customers_cart_items_path
 	end
 

@@ -2,6 +2,12 @@
 
 class Customers::RegistrationsController < Devise::RegistrationsController
    before_action :configure_sign_up_params, only: [:create]
+
+   #ログイン後のリダイレクト先
+def after_sign_up_path_for(resource)
+  customers_items_path
+end 
+
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up

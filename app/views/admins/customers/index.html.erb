@@ -1,3 +1,4 @@
+<%= render 'layouts/admins' %>
 <div class="container">
 	<div class="row">
 		<h2>会員一覧</h2>
@@ -16,10 +17,16 @@
 					<td><%= customer.id %></td>
 					<td><%= link_to customer.surname + customer.first_name, admins_customer_path(customer) %></td>
 					<td><%= customer.email %></td>
-					<td><%= "有効" %></td><!-- ここの記述を変更する必要がある -->
+					<td><% if customer.deleted? %>
+						退会済
+						<% else %>
+						有効
+						<% end %>
+					</td><!-- ここの記述を変更する必要がある -->
 				</tr>
 				<% end %>
 			</tbody>
 		</table>
+		<%= paginate @customers %>
 	</div>
 </div>

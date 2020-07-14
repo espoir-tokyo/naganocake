@@ -3,14 +3,15 @@
 	<div class="row">
 		<div class="col-xs-10">
 			<h2 class="">商品一覧</h2>
+			<%= link_to "新規登録", new_admins_item_path %>
 			<table class="table">
 				<thead>
 					<tr>
-						<th>商品ID</th>
-						<th>商品名</th>
-						<th>税抜き価格</th>
-						<th>ジャンル</th>
-						<th>ステータス</th>
+						<th class="th1">商品ID</th>
+						<th class="th2">商品名</th>
+						<th class="th3">税抜き価格</th>
+						<th class="th4">ジャンル</th>
+						<th class="th5">ステータス</th>
 					</tr>
 				</thead>
 				<% @items.each do |item| %>
@@ -22,7 +23,7 @@
 				    			<% end %>
 				    		</td>
 				    		<td><%= to_yen(item.price) %></td>
-				    		<td><%= item.genre_id %></td>
+				    		<td><%= item.genre.name %></td>
 				    		<td><%= display(item.sale_status) %></td>
 				    	</tr>
 				    </tbody>
@@ -31,5 +32,7 @@
 		</div>
 	</div>
 
+	<%= paginate @items %>
 
-<%= render 'layouts/footer' %>
+
+
