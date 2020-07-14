@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="col-xs-2">
-                <%= f.submit '追加', class: 'btn btn-large btn-primary btn-block items-button' %>
+                <%= f.submit '追加', class: 'btn btn-primary' %>
             <% end %>
         </div>
     </div>
@@ -23,9 +23,9 @@
     		<table class="table">
     			<thead>
     				<tr>
-    					<th>ジャンル</th>
-    					<th>状態</th>
-    					<th></th>
+    					<th class="th1">ジャンル</th>
+    					<th class="th2">状態</th>
+    					<th class="th3"></th>
     				</tr>
     			</thead>
     			<% @genres.each do |genre| %>
@@ -33,12 +33,10 @@
     					<tr>
     						<td><%= genre.name %></td>
     						<td><%= display(genre.flag) %></td>
-    						<td><%= link_to '編集', edit_admins_genre_path(genre) %></td>
+    						<td><%= link_to '編集', edit_admins_genre_path(genre), class: 'btn btn-primary btn-sm' %></td>
     					</tr>
     				</tbody>
     			<% end %>
     		</table>
     	</div>
     </div>
-
-<%= render 'layouts/footer' %>
