@@ -3,6 +3,7 @@
 	<div class="row">
 		<div class="col-xs-10">
 			<h2 class="">商品一覧</h2>
+			<%= link_to "新規登録", new_admins_item_path %>
 			<table class="table">
 				<thead>
 					<tr>
@@ -22,7 +23,7 @@
 				    			<% end %>
 				    		</td>
 				    		<td><%= to_yen(item.price) %></td>
-				    		<td><%= item.genre_id %></td>
+				    		<td><%= item.genre.name %></td>
 				    		<td><%= display(item.sale_status) %></td>
 				    	</tr>
 				    </tbody>

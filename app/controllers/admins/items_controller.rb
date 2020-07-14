@@ -5,8 +5,8 @@ class Admins::ItemsController < ApplicationController
 
 	def create
 		@item = Item.new(item_params)
-		if @item.save!
-			redirect_to admins_items_path, notice: "successfully created!"
+		if @item.save
+			redirect_to admins_item_path(@item.id), notice: "successfully created!"
 			# リダイレクト先はあとで変更
 		else
 			redirect_to about_path
