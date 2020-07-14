@@ -2,6 +2,10 @@ class Customer < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
+  def fulname
+  	return surname+first_name
+  end
+
   acts_as_paranoid
   
   devise :database_authenticatable, :registerable,
