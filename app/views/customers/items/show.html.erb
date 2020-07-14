@@ -25,7 +25,7 @@
 			<div>
     			<div class="item-name"><%= @item.name %></div>
     			<div class="item-description"><%= @item.description %></div>
-    			<div class="item-price">￥<%= @item.price_with_tax %>（税込）</div>
+    			<div class="item-price"><%= @item.price_with_tax %>円（税込）</div>
         	<%= form_for(@cart_item, url: customers_cart_items_path, html: {method: 'POST'}) do |f| %>
         		<%= f.hidden_field :item_id, value: @item.id %>
         		<%= f.number_field :quantity , placeholder: "個数選択", min: 1, max: 10, class: 'input-mysize' %>
