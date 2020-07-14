@@ -13,7 +13,6 @@ class Customers::CartItemsController < ApplicationController
 
 	def create
 		@item = CartItem.find_by(customer_id: current_customer.id, item_id: params[:cart_item][:item_id])
-		logger.debug(@item.inspect)
 		if @item == nil
 			@cart_item = CartItem.new(item_params)
 			@cart_item.customer_id = current_customer.id

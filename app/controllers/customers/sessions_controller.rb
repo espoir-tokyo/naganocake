@@ -7,7 +7,7 @@ def after_sign_in_path_for(resource)
 end 
 #ログアウト後のリダイレクト先
 def after_sign_out_path_for(resource)
-  customers_items_path
+  root_path
 end 
   # before_action :configure_sign_in_params, only: [:create]
 
