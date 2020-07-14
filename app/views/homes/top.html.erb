@@ -31,7 +31,7 @@
 	        	    <% @random.each do |item| %>
 	        	        <div><%= attachment_image_tag(item, :image, :fill, 120, 120) %><br>
 	        	             <%= item.name %><br>
-	        	             ￥<%= item.price_with_tax %><br>
+	        	             <%= item.price_with_tax %>円<br>
 	        	        </div>
 	        	    <% end %>
 	        	</div>
