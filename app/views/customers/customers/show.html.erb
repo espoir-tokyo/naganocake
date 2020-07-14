@@ -1,55 +1,57 @@
 <%= render 'layouts/customers' %>
-<div class="col-xs-6 col-xs-offset-3">
-<p id="notice"><%= notice %></p><br>
+<!-- <div class="col-xs-6 col-xs-offset-3">
+<p id="notice"><%= notice %></p><br> -->
+<div class="row">
+	<div class="col-xs-offset-1 col-xs-8">
+		<h2 class="mypage-headline">マイページ</h2>
 
-<h3>マイページ</h3>
+		<table>
+			<th>登録情報</th>
+				<td><%= link_to "編集する", customers_profile_edit_path, class: "btn btn-primary mypage-btn-1" %></td>
+				<td><button type="button" class="btn btn-primary">パスワードを変更する</button></td>
+		</table>
 
-<table>
-<th >登録情報</th>
-<td><%= link_to "編集する", customers_profile_edit_path, class: "btn btn-primary" %></td>
-<td><button type="button" class="btn btn-primary">パスワードを変更する</button></td>
-</table>
+		<table class="table table-bordered mypage-table">
+			<tbody>
+				<tr>
+					<td class="active", style="width:150px">氏名</td>
+					<td><%= @customer.surname %><%= @customer.first_name %></td>
+				</tr>
+				<tr>
+					<td class="active">カナ</td>
+					<td><%= @customer.surname_kana %><%= @customer.first_name_kana %></td>
+				</tr>
+				<tr>
+					<td class="active">郵便番号</td>
+					<td><%= @customer.postal_code %></td>
+				</tr>
+				<tr>
+					<td class="active">住所</td>
+					<td><%= @customer.address %></td>
+				</tr>
+				<tr>
+					<td class="active">電話番号</td>
+					<td><%= @customer.phone_number %></td>
+				</tr>
+				<tr>
+					<td class="active">メールアドレス</td>
+					<td><%= @customer.email %></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 
-<table class="table table-bordered">
-	<tbody>
-		<tr>
-			<td class="active">氏名</td>
-			<td><%= @customer.surname %><%= @customer.first_name %></td>
-		</tr>
-		<tr>
-			<td class="active">カナ</td>
-			<td><%= @customer.surname_kana %><%= @customer.first_name_kana %></td>
-		</tr>
-		<tr>
-			<td class="active">郵便番号</td>
-			<td><%= @customer.postal_code %></td>
-		</tr>
-		<tr>
-			<td class="active">住所</td>
-			<td><%= @customer.address %></td>
-		</tr>
-		<tr>
-			<td class="active">電話番号</td>
-			<td><%= @customer.phone_number %></td>
-		</tr>
-		<tr>
-			<td class="active">メールアドレス</td>
-			<td><%= @customer.email %></td>
-		</tr>
-	</tbody>
-　</table>
+	<div class="col-xs-offset-1 col-xs-7">
+		<table class="col-xs-4">
+			<th>配送先</th>
+			<td><%= link_to "一覧を見る", customers_shipping_addresses_path, class: "btn btn-primary" %></td>
+		</table>
 
-<div class="col-xs-7">
-<table class="col-xs-6">
-<th>配送先</th>
-<td><%= link_to "一覧を見る", customers_shipping_addresses_path, class: "btn btn-primary" %></td>
-</table>
-
-<table class="col-xs-6">
-<th>注文履歴</th>
-<td><%= link_to "一覧を見る", customers_orders_path, class: "btn btn-primary" %></td>
-</table>
+		<table class="col-xs-4">
+			<th>注文履歴</th>
+			<td><%= link_to "一覧を見る", customers_orders_path, class: "btn btn-primary" %></td>
+		</table>
+	</div>
 </div>
 
-
-</div>
+<%= render 'layouts/footer' %>

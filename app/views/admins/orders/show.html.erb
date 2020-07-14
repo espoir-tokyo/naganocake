@@ -1,34 +1,39 @@
-<div class="container">
-	<h2>注文履歴詳細</h2>
+<%= render 'layouts/admins' %>
 	<div class="row">
-		<div class="col-xs-11">
-			<div class="">購入者 <%= @order.customer.surname + @order.customer.first_name %></div>
-			<div class="">配送先 <%= @order.ship_postal_code + @order.ship_address + @order.ship_name %></div>
-			<div class="">支払い方法 <% if @order.payment_informantion == 0 %>
+		<div class="col-xs-1"></div>
+		<div class="col-xs-8">
+			<h2>注文履歴詳細</h2>
+			<div class="col-xs-4", style="margin-bottom: 5px">購入者</div>
+			<div class="col-xs-6", style="margin-bottom: 5px"><%= @order.customer.surname + @order.customer.first_name %></div>
+			<div class="col-xs-4", style="margin-bottom: 5px">配送先</div>
+			<div class="col-xs-6", style="margin-bottom: 5px"><%= @order.ship_postal_code + @order.ship_address + @order.ship_name %></div>
+			<div class="col-xs-4", style="margin-bottom: 5px">支払い方法</div>
+			<div class="col-xs-6", style="margin-bottom: 5px"><% if @order.payment_informantion == 0 %>
 				                       クレジットカード
 				                    <% else %>
 				                       銀行振込
 				                    <% end %>
 		    </div>
 			<%= form_for(@order, url: admins_order_path, html: {method: 'PATCH'}) do |f| %>
-				<div class="">注文ステータス <%= f.select :order_status, [
+				<div class="col-xs-4", style="margin-bottom: 20px">注文ステータス</div>
+				    <div class="col-xs-5", style="margin-bottom: 20px"><%= f.select :order_status, [
 					            ["入金待ち", "0"],
 							    ["入金確認", "1"],
 							    ["製作中", "2"],
 							    ["発送準備中", "3"],
 							    ["発送済み", "4"],
 							    ] %>
+					</div>
 							    <!--  include_blank: " @order.order_status " -->
-							    <%= f.submit '更新', class: 'btn btn-large btn-primary items-button' %>
-			    </div>
+							    <div class="col-xs-2", style="margin-bottom: 20px"><%= f.submit '更新', class: 'btn btn-large btn-primary items-button' %></div>
 			<% end %>
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-xs-8">
-			<table class="table">
+		<div class="col-xs-8 col-xs-offset-1">
+			<table class="table table">
 				<thead>
-					<tr>
+					<tr class="active">
 						<th>商品名</th>
 						<th>単価</th>
 						<th>数量</th>
@@ -40,31 +45,43 @@
 				<% @order.order_items.each do |order| %>
 					<tbody>
 						<tr>
-							<td><%= order.item.name %></td>
-							<td><%= order.perchase_price %></td>
-							<td><%= order.quantity %></td>
-							<td><%= order.perchase_price * order.quantity %></td>
+							<td class="col-xs-4"><%= order.item.name %></td>
+							<td class="col-xs-2"><%= order.perchase_price %>円</td>
+							<td class="col-xs-2"><%= order.quantity %></td>
+							<td class="col-xs-2"><%= order.perchase_price * order.quantity %>円</td>
 							<%= form_for(order, url: "/admins/order_items/#{order.id}" , html: {method: 'PATCH'}) do |f| %>
 								<%= f.hidden_field :order_id, value:order.order.id %>
-								<td><%= f.select :item_status, [
+								<td class="col-xs-2"><%= f.select :item_status, [
 							        ["着手不可", "0"],
 							        ["制作待ち", "1"],
 							        ["製作中", "2"],
 							        ["制作完了", "3"],
 							   	     ] %></td>
 							<!-- 制作ステータスもconfirmで一緒に送らないといけない？ -->
-							<td><%= f.submit '更新', class: 'btn btn-large btn-primary btn-block items-button' %></td>
+							<td class="col-xs-2"><%= f.submit '更新', class: 'btn btn-large btn-primary btn-block items-button' %></td>
 							<% end %>
 						</tr>
 					</tbody>
 				<% end %>
 			</table>
 		</div>
-		<div class="col-xs-4">
-			<div>商品合計 <%= @order.bill - @order.carriage %></div>
-			<div>送料 <%= @order.carriage %></div>
-			<div>請求金額 <%= @order.bill %></div>
+		<div class="col-xs-3 last_result">
+			<div>
+				<div class="col-xs-5 result-text-1">商品合計</div>
+				<div class="col-xs-6 result-text-2"><%= @order.bill - @order.carriage %>円</div>
+			</div>
+			<div>
+				<div class="col-xs-5 result-text-1">送料</div>
+				<div class="col-xs-6 result-text-2"><%= @order.carriage %>円</div>
+			</div>
+			<div>
+				<div class="col-xs-5 result-text-1">請求金額</div>
+				<div class="col-xs-6 result-text-2"><%= @order.bill %>円</div>
+			</div>
 		</div>
 	</div>
 </div>
-<%= link_to '一覧', admins_orders_path %>
+
+
+
+
