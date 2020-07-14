@@ -25,6 +25,7 @@
                 <li><%= link_to ' ログアウト', destroy_customer_session_path, method: :delete,class: 'glyphicon glyphicon-log-out logout' %></li>
               <% else %>
                <p class="navbar-text">ようこそ ゲスト さん !</p>
+                <li><%= link_to ' About',about_path,class: 'glyphicon glyphicon-cutlery' %></li>
                 <li><%= link_to ' 商品一覧',customers_items_path,class: 'glyphicon glyphicon-cutlery' %></li>
                 <li><%= link_to ' 新規登録',new_customer_registration_path,class: 'glyphicon glyphicon-edit' %></li>
                 <li><%= link_to ' ログイン', new_customer_session_path,class: 'glyphicon glyphicon-log-in' %></li>
@@ -34,7 +35,6 @@
       </div>
     </header>
       <div class='container'>
-
 
         <p id="notice"><%= notice %></p>
 

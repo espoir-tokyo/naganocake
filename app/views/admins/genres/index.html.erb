@@ -1,8 +1,8 @@
 <%= render 'layouts/admins' %>
 
-	<h2>ジャンル一覧・追加</h2>
 	<div class="row genre-new">
-		<div class="col-xs-5">
+        <h2 class="col-xs-offset-2">ジャンル一覧・追加</h2>
+		<div class="col-xs-offset-2 col-xs-5">
 			<div class="col-xs-8">
 			<%= form_for(@genre, url: admins_genres_path, html: {method: 'POST'}) do |f|  %>
 			    <%= f.label :ジャンル %>
@@ -19,7 +19,7 @@
         </div>
     </div>
     <div class="row">
-    	<div class="col-xs-6">
+    	<div class="col-xs-offset-2 col-xs-6">
     		<table class="table">
     			<thead>
     				<tr>

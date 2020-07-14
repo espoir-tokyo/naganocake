@@ -2,8 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.pull-left{
+
+.item-genre{
 	margin-bottom: 40px;
+}
+
+
+.yohaku{
+	margin-top: 60px;
 }
 
 
@@ -27,4 +33,8 @@
 .input-mysize {
   width: 80px;
   height: 30px;
+}
+
+.table{
+	margin-top: 20px !important;
 }
