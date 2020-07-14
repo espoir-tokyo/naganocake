@@ -72,3 +72,5 @@ gem "refile-mini_magick"
 gem 'pry-byebug'
 
 gem 'paranoia'
+
+gem 'kaminari', '~> 0.17.0'

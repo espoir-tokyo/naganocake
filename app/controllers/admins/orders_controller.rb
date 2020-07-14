@@ -1,10 +1,9 @@
 class Admins::OrdersController < ApplicationController
-  
-  def index
+    def index
 		@orders = Order.all
-		@orders = Order.order(created_at: :desc)
+		@orders = Order.order(created_at: :desc).page(params[:page]).per(10)
 	end
-  
+
 	def show
 		@order = Order.find(params[:id])
 		@orders = Order.all
@@ -12,11 +11,17 @@ class Admins::OrdersController < ApplicationController
 
 	def update
 		@order = Order.find(params[:id])
-		if	@order_item = OrderItem.find
-			redirect_to admins_order_path(@order), notice: "successfully updated!"
-		else
-			redirect_to admins_orders_path
+		if params[:order][:order_status] == "1"
+			@order.order_items.each do |order_item|
+				order_item.update(item_status: "1")
+			end
 		end
+		# @order.order_items.each do |order_item|
+		# 		order_item.item_status = "1"
+		# 		order_item.save
+		# 	end
+		@order.update(order_params)
+		redirect_to admins_order_path(@order), notice: "successfully updated!"
 	end
 
 	private
@@ -32,9 +37,8 @@ class Admins::OrdersController < ApplicationController
       :order_status,
       :payment_informantion,
       :order_status,
+      order_item:[:item_status]
     )
     end
-
-	
 
 end

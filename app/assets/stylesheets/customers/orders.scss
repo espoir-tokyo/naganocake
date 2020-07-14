@@ -1,3 +1,75 @@
 // Place all the styles related to the customers::orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+h2{
+	margin-bottom: 20px !important;
+}
+h4{
+	font-weight: bold !important;
+	margin-top: 30px !important;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.radio-btn{
+	margin-left: 40px;
+}
+.order_info_content{
+	margin-left: 70px;
+}
+select{
+	width: 80%;
+	height: 30px;
+}
+.field{
+	margin-left: 70px;
+}
+.input-text-lg{
+	margin-left: 120px;
+	width: 70%;
+	height: 30px;
+}
+.input-text{
+	margin-left: 120px;
+}
+.confirmation_screen-btn{
+	margin-top: 20px;
+	width: 70%;
+	height: 50px;
+	font-size: 20px !important;
+}
+
+
+.confilm-headline{
+	margin-bottom: 20px;
+}
+.payment_detail{
+	margin: 72px 0 0 20px;
+}
+.payment_and_address{
+	display: inline-block;
+}
+.purchase_fixing-btn{
+	margin-top: 30px;
+	width: 70%;
+	height: 50px;
+	font-size: 20px !important;
+}
+
+
+.thanks-text{
+	margin: 100px auto !important;
+	text-align: center;
+}
+
+
+.result-text-1{
+	font-weight: bold;
+	margin: 10px 0;
+}
+.result-text-2{
+	margin: 10px 0;
+}
+
+

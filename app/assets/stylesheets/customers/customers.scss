@@ -1,3 +1,33 @@
 // Place all the styles related to the customers::customers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.mypage-headline{
+	margin-bottom: 30px !important;
+	font-weight: bold !important;
+}
+.mypage-btn-1{
+	margin: 0 30px;
+}
+.mypage-table{
+	margin-top: 10px;
+	margin-bottom: 10px !important;
+}
+
+
+.input-field{
+	width: 70%;
+	heigth: 20px;
+}
+.edit-btn{
+	margin: 0 60px;
+}
+
+
+.withdrawal-headline{
+	margin-bottom: 40px !important;
+}
+.withdrawal-btn{
+	margin: 30px 60px;
+}
